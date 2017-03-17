@@ -4,9 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest",
+    "basic": "node src/basic.js",
+    "reactive": "node src/reactive.js"
   },
   "keywords": [],
   "author": "justvitalius",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "jest": "^18.1.0"
+  },
+  "dependencies": {
+    "rxjs": "^5.1.0"
+  },
+  "jest": {
+    "collectCoverageFrom" : ["src/**/*.{js,jsx}"]
+  }
 }
