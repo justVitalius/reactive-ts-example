@@ -4,21 +4,40 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "tslint src/**/* && jest",
+    "coverage": "jest --coverage",
     "basic": "node src/basic.js",
-    "reactive": "node src/reactive.js"
+    "reactive": "rimraf dist && tsc && DEBUG=Map,Player node dist/reactive.js"
   },
   "keywords": [],
   "author": "justvitalius",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^3.15.0",
-    "jest": "^18.1.0"
+    "jest": "^19.0.2",
+    "rimraf": "^2.6.1",
+    "ts-jest": "^19.0.1",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
   },
   "dependencies": {
+    "debug": "^2.6.3",
     "rxjs": "^5.1.0"
   },
   "jest": {
-    "collectCoverageFrom" : ["src/**/*.{js,jsx}"]
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "collectCoverage": true,
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js"
   }
 }

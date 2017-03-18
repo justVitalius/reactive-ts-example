@@ -1,7 +1,11 @@
-const { Observable } = require('rxjs');
-const { calculateProfile, generatePlayer } = require('./reactive/profile');
-const { moveRight } = require('./reactive/moves');
-const { generateCell } = require('./reactive/map');
+import debuggerable from 'debug';
+import { Observable } from 'rxjs';
+import { generateCell } from './reactive/map';
+import { moveRight } from './reactive/moves';
+import { calculateProfile, generatePlayer } from './reactive/profile';
+
+const playerLog = debuggerable('Player');
+const mapLog = debuggerable('Map');
 
 const player = generatePlayer();
 const cellA = generateCell({ award: 1, move: 1, name: 'cellA' });
@@ -13,16 +17,16 @@ const map = [cellB, cellA, cellA, cellC, cellC, cellB, cellA];
 const moves$ = Observable.from([moveRight(), moveRight()]);
 
 const playerCoordinates$ = moves$
-  .map( df => {
+  .map( (df) => {
     return { x: player.x + df.x };
-  })  //пересчет координат
-
+  });  // пересчет координат
 
 const player$ = playerCoordinates$
   .map( calculateProfile(map)(player) )
   .startWith({ x: 0 });
 
-player$.subscribe( player => {
+player$.subscribe( () => {
   const currentX = player.x;
-  console.log(map.slice(0, currentX).concat(cellPlayer).concat(map.slice(currentX + 1, map.length)))
-});
+  mapLog(map.slice(0, currentX).concat(cellPlayer).concat(map.slice(currentX + 1, map.length)));
+}, null, () => playerLog(player),
+);

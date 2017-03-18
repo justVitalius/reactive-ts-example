@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "rootDir": "./src",
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "outDir": "dist",
+        "allowJs": true
+    },
+    "exclude": [
+        "node_modules",
+        "coverage",
+        "**/*/__tests__/*.js"
+    ]
+}

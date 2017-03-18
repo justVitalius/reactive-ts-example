@@ -5,7 +5,7 @@ module.exports = {
       moves: player.moves + 1,
       x: player.x + map[player.x].move,
       cells: player.cells.concat(map[player.x]),
-    })
+    });
   },
 
   generatePlayer: () => (
@@ -15,5 +15,5 @@ module.exports = {
       x: 0,
       cells: [],
     }
-  )
+  ),
 };
