@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 function generateCell({ award, move, name }) {
   return {
     award,

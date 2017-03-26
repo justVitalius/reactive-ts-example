@@ -1,6 +1,6 @@
 import debuggerable from 'debug';
 import { Observable } from 'rxjs';
-import { generateCell } from './reactive/map';
+import { generateCell, insertPlayer } from './reactive/map';
 import { moveRight } from './reactive/moves';
 import { calculateProfile, generatePlayer } from './reactive/profile';
 
@@ -27,6 +27,6 @@ const player$ = playerCoordinates$
 
 player$.subscribe( () => {
   const currentX = player.x;
-  mapLog(map.slice(0, currentX).concat(cellPlayer).concat(map.slice(currentX + 1, map.length)));
+  mapLog(insertPlayer(map, cellPlayer, currentX));
 }, null, () => playerLog(player),
 );

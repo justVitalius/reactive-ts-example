@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tslint src/**/* && jest",
+    "pretest": "tslint src/**/*",
+    "test": "jest",
     "coverage": "jest --coverage",
     "basic": "node src/basic.js",
     "reactive": "rimraf dist && tsc && DEBUG=Map,Player node dist/reactive.js"
@@ -32,6 +33,10 @@
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
+    "coveragePathIgnorePatterns": [
+      "basic.js",
+      "reactive.ts"
+    ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
