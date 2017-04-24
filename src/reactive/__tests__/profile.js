@@ -1,7 +1,7 @@
-const { calculateProfile, generatePlayer } = require('../profile');
+const { calculateProfile, generatePlayer } = require("../profile");
 
-describe('Profile section', () => {
-  describe('calculateProfile', () => {
+describe("Profile section", () => {
+  describe("calculateProfile", () => {
 
     const map = [
       { award: 1, move: 1 },
@@ -14,44 +14,44 @@ describe('Profile section', () => {
       moves: 0,
       x: 1,
       cells: [],
-    }
+    };
 
-    it('do not changes a <Map>', () => {
-      calculateProfile(map)(Object.assign({}, player))()
+    it("do not changes a <Map>", () => {
+      calculateProfile(map)(Object.assign({}, player))();
       expect(
-        map
+        map,
       ).toEqual(map);
-    })
+    });
 
-    it('changes a <Player>', () => {
+    it("changes a <Player>", () => {
       expect(
-        calculateProfile(map)(Object.assign({}, player))()
+        calculateProfile(map)(Object.assign({}, player))(),
       ).not.toEqual(player);
-    })
+    });
 
-    it('adds cells from <Map> to <Player> by <x> coordinate', () => {
+    it("adds cells from <Map> to <Player> by <x> coordinate", () => {
       const newPlayer = calculateProfile(map)(Object.assign({}, player))();
       expect(
-        newPlayer.cells
+        newPlayer.cells,
       ).not.toEqual([]);
-    })
+    });
 
-  })
+  });
 
-  describe('generatePlayer', () => {
+  describe("generatePlayer", () => {
     const expectedPlayer = {
       awards: 0,
       moves: 0,
       x: 0,
       cells: [],
-    }
+    };
 
-    it('returns empty <Player>', () => {
+    it("returns empty <Player>", () => {
       expect(
-        generatePlayer()
+        generatePlayer(),
       ).toEqual(
-        expectedPlayer
-      )
-    })
-  })
-})
+        expectedPlayer,
+      );
+    });
+  });
+});
