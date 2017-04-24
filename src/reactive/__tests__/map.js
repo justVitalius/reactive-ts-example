@@ -1,3 +1,4 @@
+
 const { generateCell, insertPlayer } = require('../map');
 
 describe('Map section', () => {
@@ -41,4 +42,5 @@ describe('Map section', () => {
       expect(map).toEqual(map)
     })
   })
+
 })
