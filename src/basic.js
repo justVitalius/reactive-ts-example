@@ -1,15 +1,17 @@
+/* istanbul ignore next */
+/* tslint:disable */
 function generateCell({ award, move, name }) {
   return {
     award,
     move,
     inspect: () => name,
-  }
+  };
 }
 
-const cellA = generateCell({ award: 1, move: 1, name: 'cellA' });
-const cellB = generateCell({ award: 1, move: 3, name: 'cellB' });
-const cellC = generateCell({ award: 3, move: 1, name: 'cellC' });
-const cellPlayer = generateCell({ award: 0, move: 0, name: 'Player' });
+const cellA = generateCell({ award: 1, move: 1, name: "cellA" });
+const cellB = generateCell({ award: 1, move: 3, name: "cellB" });
+const cellC = generateCell({ award: 3, move: 1, name: "cellC" });
+const cellPlayer = generateCell({ award: 0, move: 0, name: "Player" });
 
 const map = [cellB, cellA, cellA, cellC, cellC, cellB, cellA];
 let player = {
@@ -30,10 +32,10 @@ const mover = (map) => (player) => () => {
 };
 
 const move = mover(map)(player);
-console.log('==========================');
+console.log("==========================");
 console.log(map);
 move();
 move();
 move();
-console.log('==========================');
+console.log("==========================");
 console.log(player);

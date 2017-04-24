@@ -1,10 +1,10 @@
-const { moveRight } = require('../moves');
+const { moveRight } = require("../moves");
 
-describe('Moves section', () => {
-  describe('moveRight', () => {
-    it('returns diff coordinates', () => {
+describe("Moves section", () => {
+  describe("moveRight", () => {
+    it("returns diff coordinates", () => {
       expect(moveRight()).toEqual({ x: 1 });
-    })
+    });
 
-  })
-})
+  });
+});
